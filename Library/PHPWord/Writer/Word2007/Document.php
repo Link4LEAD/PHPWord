@@ -106,7 +106,7 @@ class PHPWord_Writer_Word2007_Document extends PHPWord_Writer_Word2007_Base {
 		return $objWriter->getData();
 	}
 	
-	private function _writeSection(PHPWord_Shared_XMLWriter $objWriter = null, PHPWord_Section $section) {
+	protected function _writeSection(PHPWord_Shared_XMLWriter $objWriter = null, PHPWord_Section $section) {
 		$objWriter->startElement('w:p');
 			$objWriter->startElement('w:pPr');
 				$this->_writeEndSection($objWriter, $section, 3);
@@ -114,7 +114,7 @@ class PHPWord_Writer_Word2007_Document extends PHPWord_Writer_Word2007_Base {
 		$objWriter->endElement();
 	}
 	
-	private function _writeEndSection(PHPWord_Shared_XMLWriter $objWriter = null, PHPWord_Section $section) {
+	protected function _writeEndSection(PHPWord_Shared_XMLWriter $objWriter = null, PHPWord_Section $section) {
 		$_settings = $section->getSettings();
 		$_header = $section->getHeader();
 		$_footer = $section->getFooter();
@@ -221,7 +221,7 @@ class PHPWord_Writer_Word2007_Document extends PHPWord_Writer_Word2007_Base {
 		$objWriter->endElement();
 	}
 	
-	private function _writePageBreak(PHPWord_Shared_XMLWriter $objWriter = null) {
+	protected function _writePageBreak(PHPWord_Shared_XMLWriter $objWriter = null) {
 		$objWriter->startElement('w:p');
 			$objWriter->startElement('w:r');
 				$objWriter->startElement('w:br');
@@ -231,7 +231,7 @@ class PHPWord_Writer_Word2007_Document extends PHPWord_Writer_Word2007_Base {
 		$objWriter->endElement();
 	}
 	
-	private function _writeListItem(PHPWord_Shared_XMLWriter $objWriter = null, PHPWord_Section_ListItem $listItem) {
+	protected function _writeListItem(PHPWord_Shared_XMLWriter $objWriter = null, PHPWord_Section_ListItem $listItem) {
 		$textObject = $listItem->getTextObject();
 		$text = $textObject->getText();
         $styleParagraph = $textObject->getParagraphStyle();
